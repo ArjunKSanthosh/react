@@ -1,35 +1,68 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
+// class App extends React.Component{
+//   constructor(props){
+//     super(props);
+//     this.state={
+//       count:0
+//     }
+//   }
+//   render(){
+//     const increment=()=>{
+//       this.setState({count:this.state.count+=1})
+//     }
+//     const decrement=()=>{
+//       if(this.state.count>0){
+//         this.setState({count:this.state.count-=1})
+//       }
+//     }
+//      return <div className="main">
+//         <button onClick={decrement}>-</button>
+//         <h3>Count {this.state.count}</h3>
+//         <button onClick={increment}>+</button>
+//       </div>
+//   }
+// }
+// export default App
+import React from "react";
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+class App extends React.Component{
+  constructor(props){
+    super (props)
+    this.state={
+      inputVal:"",
+      items:[]
+    }
+  }
+  handleChange=(event)=>{
+    this.setState({inputVal:event.target.value})
+  }
+  handleSubmit=()=>{
+    console.log("hai");
+    this.setState({items:[...this.state.items,this.state.inputVal],inputVal:""})
+  }
+render(){
+  console.log(this.state.items);
+  return <div className="main">
+     <input type="text" name="" id="" value={this.state.inputVal} onChange={this.handleChange} />
+     <button onClick={this.handleSubmit}>Add</button>
+     <div>
+     <ul>
+      {
+        this.state.items.map((item,ind)=>
+          <li key={ind}>
+            {item}
+            <button>delete</button>
+          </li>
+        )
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      }
+     </ul>
+
+     </div>
+  </div>
+}
+
 }
 
 export default App
