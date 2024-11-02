@@ -6,6 +6,26 @@
   height: 100vh;
   width: 100%;
   display: flex;
+  justify-content:space-evenly ;
+  flex-wrap: wrap;
+}
+button{
+  margin-left: 10px;
+}
+.sub{
+  margin-left: 20px;
+}
+.prod{
+  height: 18rem;
+  width: 15rem;
+  border: 1px solid black ;
+  margin-bottom: 2%;
+  display: flex;
   align-items: center;
-  justify-content: center;
+  flex-direction: column;
+}
+.prod img{
+  height: 13rem;
+  width: 13rem;
+  object-fit: cover;
 }

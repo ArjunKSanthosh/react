@@ -1,4 +1,8 @@
 
+// //console.log(this.state.count);
+  
+// console.log(this.state.items);
+
 // class App extends React.Component{
 //   constructor(props){
 //     super(props);
@@ -23,43 +27,67 @@
 //   }
 // }
 // export default App
-import React from "react";
+
+////////////////////////////////////////////////////////......................................................000000000000000000000000000000000000---------------------------------------*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+// handleChange=(event)=>{
+//   this.setState({inputVal:event.target.value})
+// }
+// handleSubmit=()=>{
+//   console.log("hai");
+//   this.setState({items:[...this.state.items,this.state.inputVal],inputVal:""})
+// }
+// deleteItem=(item)=>{
+//   this.setState({items:this.state.items.filter((i)=>{
+//     return i!=item
+//   })})
+// }
+{/* <input type="text" name="" id="" value={this.state.inputVal} onChange={this.handleChange} />
+<button onClick={this.handleSubmit}>Add</button>
+<button onClick={()=>this.setState({count:10})}>Count{this.state.count}</button>
+<div className="sub">
+<ul>
+ {
+   this.state.items.map((item,ind)=>
+     <li key={ind}>
+       {item}
+       <button onClick={()=>this.deleteItem(item)}>delete</button>
+     </li>
+   )
+
+ }
+</ul>
+
+</div> */}
+
+
+
+import React,{PureComponent} from "react";
 import './App.css'
 
-class App extends React.Component{
+class App extends PureComponent{
   constructor(props){
     super (props)
     this.state={
       inputVal:"",
       items:[]
     }
+  } 
+  async componentDidMount(){
+    const res=await fetch("https://dummyjson.com/products")
+    console.log(res);
+    const data=await res.json();
+    this.setState({items:[...data.products]})
   }
-  handleChange=(event)=>{
-    this.setState({inputVal:event.target.value})
-  }
-  handleSubmit=()=>{
-    console.log("hai");
-    this.setState({items:[...this.state.items,this.state.inputVal],inputVal:""})
-  }
+
 render(){
-  console.log(this.state.items);
+  
   return <div className="main">
-     <input type="text" name="" id="" value={this.state.inputVal} onChange={this.handleChange} />
-     <button onClick={this.handleSubmit}>Add</button>
-     <div>
-     <ul>
-      {
-        this.state.items.map((item,ind)=>
-          <li key={ind}>
-            {item}
-            <button>delete</button>
-          </li>
-        )
-
-      }
-     </ul>
-
-     </div>
+    {this.state.items.map((item)=>{
+      return <div className="prod">
+        <h2>{item.title}</h2>
+        <img src={item.thumbnail} alt="" />
+      </div>
+    })}
   </div>
 }
 
