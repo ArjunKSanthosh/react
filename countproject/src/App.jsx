@@ -81,13 +81,23 @@ class App extends PureComponent{
 
 render(){
   
-  return <div className="main">
-    {this.state.items.map((item)=>{
-      return <div className="prod">
-        <h2>{item.title}</h2>
-        <img src={item.thumbnail} alt="" />
+  return  <div className="main">
+    <div className="nav">
+      <div className="nnn">
+       <h2>Flipkart</h2>
+      <input type="search" name="" id="input" placeholder="Search for Products,Brands and More..  " />
       </div>
-    })}
+    </div>
+   
+    <div className="proucts"> 
+      {this.state.items.map((item)=>{
+
+      return  <div className="prod">
+                    <h2>{item.title.substring(0,16)}</h2>
+                    <img src={item.thumbnail} alt="" />
+              </div>
+    })} 
+    </div>
   </div>
 }
 
