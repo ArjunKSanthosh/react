@@ -61,46 +61,46 @@
 
 
 
-import React,{PureComponent} from "react";
-import './App.css'
+// import React,{PureComponent} from "react";
+// import './App.css'
 
-class App extends PureComponent{
-  constructor(props){
-    super (props)
-    this.state={
-      inputVal:"",
-      items:[]
-    }
-  } 
-  async componentDidMount(){
-    const res=await fetch("https://dummyjson.com/products")
-    console.log(res);
-    const data=await res.json();
-    this.setState({items:[...data.products]})
-  }
+// class App extends PureComponent{
+//   constructor(props){
+//     super (props)
+//     this.state={
+//       inputVal:"",
+//       items:[]
+//     }
+//   } 
+//   async componentDidMount(){
+//     const res=await fetch("https://dummyjson.com/products")
+//     console.log(res);
+//     const data=await res.json();
+//     this.setState({items:[...data.products]})
+//   }
 
-render(){
+// render(){
   
-  return  <div className="main">
-    <div className="nav">
-      <div className="nnn">
-       <h2>Flipkart</h2>
-      <input type="search" name="" id="input" placeholder="Search for Products,Brands and More..  " />
-      </div>
-    </div>
+//   return  <div className="main">
+//     <div className="nav">
+//       <div className="nnn">
+//        <h2>Flipkart</h2>
+//       <input type="search" name="" id="input" placeholder="Search for Products,Brands and More..  " />
+//       </div>
+//     </div>
    
-    <div className="proucts"> 
-      {this.state.items.map((item)=>{
+//     <div className="proucts"> 
+//       {this.state.items.map((item)=>{
 
-      return  <div className="prod">
-                    <h2>{item.title.substring(0,16)}</h2>
-                    <img src={item.thumbnail} alt="" />
-              </div>
-    })} 
-    </div>
-  </div>
-}
+//       return  <div className="prod">
+//                     <h2>{item.title.substring(0,16)}</h2>
+//                     <img src={item.thumbnail} alt="" />
+//               </div>
+//     })} 
+//     </div>
+//   </div>
+// }
 
-}
+// }
 
-export default App
+// export default App
